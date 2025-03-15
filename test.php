@@ -7,6 +7,8 @@ $stmt->execute();
 $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!-- John is here -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,4 +52,7 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </ul>
     </div>
 </body>
+
+<!-- John is here hahaha -->
+
 </html>
