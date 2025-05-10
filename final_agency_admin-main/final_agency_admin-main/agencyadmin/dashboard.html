@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY ADMIN</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div id="background">
+        <!-- Left Sidebar Section -->
+         <div id="topbar"> 
+            <img src="logo.jpg" alt="Logo" class="logo"> </div>
+
+        <div id="divleft">
+            <div id="profile">
+                <!-- dito si pic -->
+                <img src="prc_logo.png" alt="Logo" class="profile_logo"> 
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="dashnav">Dashboard</a></li>
+                    <li><a href="flood_monitoring.html" class="dashnav">Flood Monitoring</a></li>
+                    <li><a href="incidentmanagement.html" class="dashnav">Incident Management</a></li>
+                    <li><a href="user_management.html" class="dashnav">User Management</a></li>
+                    <li><a href="announcement.html" class="dashnav">Announcement</a></li>
+                    <li><a href="setting.html" class="dashnav">Settings</a></li>
+                    <li>
+                        <form action="logout.html" method="post" style="display: inline;">
+                            <button type="submit" class="logout-btn">
+                                <span class="dashnav">LOGOUT</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content Section -->
+        <div id="divright">
+            <!-- Dashboard Header -->
+            <div class="dashboardtop">
+                <div id="title">HIGHEST CASE REPORTS</div>
+                <div id="monthof">
+                    MONTH OF   
+                    <label for="choosemonth"></label>
+                    <select id="month">
+                        <option value="">-- Select Month --</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Chart Section -->
+            <div id="chart">
+                <h1 class="chart-title">SUCCESS RATE CHART</h1>
+                <div class="chart-container">
+                    <canvas id="myPieChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="report-rows">
+                <div class="report-item">
+                    <span class="label">Robbery</span>
+                    <span class="value">24</span>
+                </div>
+                <div class="report-item">
+                    <span class="label">Physical assault</span>
+                    <span class="value">10</span>
+                </div>
+                <div class="report-item">
+                    <span class="label">Rape</span>
+                    <span class="value">5</span>
+                </div>
+                <div class="report-item">
+                    <span class="label">Car accidents</span>
+                    <span class="value">6</span>
+                </div>
+                <div class="report-item">
+                    <span class="label">Homicide</span>
+                    <span class="value">+15%</span>
+                </div>
+            </div>
+
+            <!-- Quick Stats Section -->
+            <div class="summary-container">
+                    <div class="card total-users">
+                        <div class="card-title">TOTAL USERS: </div>
+                        <div class="card-value">15,347</div>
+                    </div>
+                    <div class="card total-users">
+                        <div class="card-title">TOTAL INCIDENT REPORTS: </div>
+                        <div class="card-value">15,347</div>
+                    </div>
+            
+                    <div class="card total-incidents">
+                        <div class="card-title">TOTAL INCIDENT REPORTS</div>
+                        <div class="incident-subvalues">
+                            <div class="sub-item">
+                                <span class="sub-label">Pending</span>
+                                <span class="sub-value">102</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="sub-label">Active</span>
+                                <span class="sub-value">24</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="sub-label">Accomplished</span>
+                                <span class="sub-value">374</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                <div class="card warning flood-warning">
+                    <div class="card-title">WATER LEVEL</div>
+                    <div class="card-value">10 ft</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Section -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart Configuration
+        const ctx = document.getElementById('myPieChart').getContext('2d');
+        const myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Successful response', 'Not successful response'],
+                datasets: [{
+                    data: [60, 40], // change values here
+                    backgroundColor: ['#B01D23', '#F9F499'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Navigation Active State
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPage = window.location.pathname.split("/").pop();
+            const links = document.querySelectorAll("nav ul li a");
+        
+            links.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.parentElement.classList.add("active");
+                } 
+            });
+        });
+    </script>
+</body>
+</html>

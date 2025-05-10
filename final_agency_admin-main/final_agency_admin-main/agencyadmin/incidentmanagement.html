@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Status</title>
+    <link rel="stylesheet" href="incidentmanagement.css">
+    
+    <body>
+        <div id="background">
+            <!-- Left Sidebar Section -->
+             <div id="topbar"> 
+                <img src="logo.jpg" alt="Logo" class="logo"> </div>
+    
+            <div id="divleft">
+                <div id="profile">
+                    <!-- dito si pic -->
+                </div>
+
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="dashnav">Dashboard</a></li>
+                    <li><a href="flood_monitoring.html" class="dashnav">Flood Monitoring</a></li>
+                    <li><a href="incidentmanagement.html" class="dashnav">Incident Management</a></li>
+                    <li><a href="user_management.html" class="dashnav">User Management</a></li>
+                    <li><a href="announcement.html" class="dashnav">Announcement</a></li>
+                    <li><a href="setting.html" class="dashnav">Settings</a></li>
+                    <li>
+                        <form action="logout.php" method="post" style="display: inline;">
+                            <button type="submit" class="logout-btn">
+                                <span class="dashnav">LOGOUT</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="divright">
+            <h1>INCIDENT REPORTS</h1>
+
+            <div class="form-row">
+                <div class="button-container">
+                    <button id="btn-pending" class="active">PENDING REPORTS</button>
+                    <button id="btn-active">ACTIVE REPORTS</button>
+                    <button id="btn-completed">ACCOMPLISHED REPORTS</button>
+                </div>
+              
+                <div class="incident-response-row">
+                    <div class="incident-group">
+                        <label for="incident">INCIDENT TYPE:</label>
+                        <select name="incident" id="incident">
+                            <option value="">All Types</option>
+                            <option value="Robbery">Robbery</option>
+                            <option value="Murder">Murder</option>
+                            <option value="Homicide">Homicide</option>
+                            <option value="Drugs">Violation of Anti-Illegal Drugs Act</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pending-reports">
+                <table class="pending-table" border="1" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>REPORTED BY</th>
+                            <th>INCIDENT TYPE</th>
+                            <th>DATE AND TIME</th>
+                            <th>LOCATION</th>
+                            <th>PHOTO</th>
+                            <th>RESPONSE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">No pending incidents found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>      
+            
+            <div id="active-reports" style="display: none;">
+                <table class="active-table" border="1" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>REPORTED BY</th>
+                            <th>INCIDENT TYPE</th>
+                            <th>DATE AND TIME</th>
+                            <th>LOCATION</th>
+                            <th>PHOTO</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">No active incidents found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>      
+            
+            <div id="completed-reports" style="display: none;">
+                <table class="completed-table" border="1" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>REPORTED BY</th>
+                            <th>INCIDENT TYPE</th>
+                            <th>DATE AND TIME</th>
+                            <th>LOCATION</th>
+                            <th>PHOTO</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">No completed incidents found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnPending = document.getElementById("btn-pending");
+            const btnActive = document.getElementById("btn-active");
+            const btnCompleted = document.getElementById("btn-completed");
+
+            const pending = document.getElementById("pending-reports");
+            const active = document.getElementById("active-reports");
+            const completed = document.getElementById("completed-reports");
+
+            btnPending.addEventListener("click", () => {
+                showOnly(pending);
+                setActiveButton(btnPending);
+            });
+            btnActive.addEventListener("click", () => {
+                showOnly(active);
+                setActiveButton(btnActive);
+            });
+            btnCompleted.addEventListener("click", () => {
+                showOnly(completed);
+                setActiveButton(btnCompleted);
+            });
+
+            function showOnly(tableToShow) {
+                pending.style.display = "none";
+                active.style.display = "none";
+                completed.style.display = "none";
+                tableToShow.style.display = "block";
+            }   
+
+            function setActiveButton(activeButton) {
+                document.querySelectorAll(".button-container button").forEach(btn => {
+                    btn.classList.remove("active");
+                });
+                activeButton.classList.add("active");
+            }
+        });
+
+        // Incident verification
+        function verifyIncident(incidentId, action) {
+            if (confirm(`Are you sure you want to ${action} this incident?`)) {
+                fetch('verify_incident.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        incident_id: incidentId,
+                        action: action
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error: ' + (data.message || 'Failed to update incident'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while updating the incident');
+                });
+            }
+        }
+
+        // Photo upload functionality
+        function showUploadModal(incidentId) {
+            document.getElementById('incidentId').value = incidentId;
+            document.getElementById('uploadModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('uploadModal').style.display = 'none';
+        }
+
+        document.getElementById('photoUploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            fetch('upload_photo.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Photo uploaded successfully!');
+                    location.reload();
+                } else {
+                    alert('Error: ' + (data.message || 'Upload failed'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during upload');
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('uploadModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

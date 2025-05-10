@@ -1,0 +1,331 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+#background {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #f3c2c4;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 25px;
+  left: 20px;
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===== Left Panel - Navigation ===== */
+#divleft {
+  background-color: #B01D23;
+  width: 15%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px; /* Account for top bar */
+  margin-top: -80px; /* Pull up to overlap */
+}
+
+#profile {
+  height: 10px;
+  background-color: #B01D23;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#profile {
+  height: 150px;
+  padding: 10px;
+  width: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+
+/* Navigation Styles */
+nav {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-bottom: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 12px 15px;
+  font-size: 15px;
+}
+
+nav ul li:hover,
+nav ul li.active {
+  background-color: #313131;
+}
+
+/* RED BOX */
+#divright {
+  background-color: #ffffff;
+  width: 85%;
+  float: right;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+/* DITO NA YUNG SA FORM ANNOUNCEMENT */
+h1 {
+  text-align: left;
+  padding-left: 50px;
+  font-size: 30px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* yung background */
+#announcementF {
+  max-width: 950px;
+  margin: 0 auto;
+  background-color: #B01D23;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* input title ng announcement */
+#announcementForm input[name="title"] {
+  width: 80%;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 15px;
+  margin-left: 130px;
+  cursor: text;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* kapag pinindot si input title */
+#announcementExpanded {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+  margin-left: 130px;
+  padding: 10px 0;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* yung content ng announcement */
+#announcementExpanded textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  resize: vertical;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* choose image button */
+.file-label {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border: 2px dashed #ccc;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.file-label:hover {
+  background-color: #e9e9e9;
+  border-color: #838181;
+}
+
+/*  */
+#announcementExpanded input[type="file"] {
+  display: none;
+}
+
+#fileNameDisplay {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+/* button cancel and publish */
+.buttons button {
+  padding: 10px 25px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.buttons button:first-child {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.buttons button:first-child:hover {
+  background-color: #d0d0d0;
+}
+
+.buttons button:last-child {
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.buttons button:last-child:hover {
+  background-color: #43A047;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* When expanded */
+#announcementForm.active #announcementExpanded {
+  display: flex;
+}
+
+
+/* bulletin naman */
+#bulletin {
+    max-width: 970px;
+    max-height: 400px;
+    margin: 0 auto;
+    background-color: #B01D23;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 340px;
+    overflow-y: auto;
+    padding-right: 10px; /* optional, to prevent content from being hidden behind scrollbar */
+    border: 1px solid #ccc; /* optional, just for visual boundaries */
+    }
+
+    /* ANNOUNCEMENTS */
+
+    .content {
+      width: 95%;
+      color: white;
+      padding: 10px;
+      text-align: left;
+  }
+  
+  .content h1 {
+    text-align: center;
+      font-size: 25px;
+      font-family: 'Times New Roman';
+      letter-spacing: 2px;
+  }
+  
+  /* Announcement Section */
+  .announcements {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      gap: 1rem;
+  }
+  
+  .announcement {
+      background-color: #333;
+      color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+  }
+  
+  .announcement h3 {
+      font-size: 24px;
+      color: #f1c40f;
+      margin-bottom: 10px;
+  }
+  
+  .announcement-date {
+      font-size: 14px;
+      color: #bbb;
+      margin-bottom: 10px;
+  }
+  
+  .announcement-content {
+      font-size: 16px;
+      line-height: 1.5;
+  }
+  

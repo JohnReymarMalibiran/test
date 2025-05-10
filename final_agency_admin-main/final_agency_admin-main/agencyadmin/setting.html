@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY ADMIN</title>
+    <link rel="stylesheet" href="setting.css">
+</head>
+
+<body>
+    <div id="background">
+        <!-- Left Sidebar Section -->
+         <div id="topbar"> 
+            <img src="logo.jpg" alt="Logo" class="logo"> </div>
+
+        <div id="divleft">
+            <div id="profile">
+                <!-- dito si pic -->
+            </div>
+
+          <nav>
+            <ul>
+                <li><a href="dashboard.html" class="dashnav">Dashboard</a></li>
+                    <li><a href="flood_monitoring.html" class="dashnav">Flood Monitoring</a></li>
+                    <li><a href="incidentmanagement.html" class="dashnav">Incident Management</a></li>
+                    <li><a href="user_management.html" class="dashnav">User Management</a></li>
+                    <li><a href="announcement.html" class="dashnav">Announcement</a></li>
+                    <li><a href="setting.html" class="dashnav">Settings</a></li>
+                <li>
+                    <form action="logout.php" method="post" style="display: inline;">
+                        <button type="submit" class="logout-btn">
+                            <span class="dashnav">LOGOUT</span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+      </div>
+
+      <div id="divright">
+        <h1>AGENCY PROFILE</h1>
+        
+        <div id="agencyprofile">
+            <form action="ap">
+                <h2>Welcome, <?= htmlspecialchars($agency['agency_name']) ?></h2>
+                <p><strong>Email:</strong> <?= htmlspecialchars($agency['email']) ?></p>
+                <p><strong>Contact:</strong> <?= htmlspecialchars($agency['contact_number']) ?></p>
+                <p><strong>Description:</strong> <span id="d_description"><?= htmlspecialchars($agency['description'] ?? 'No description yet') ?></span></p>
+            </form>
+        </div>
+
+        <div id="details">
+            <h2>Agency Information</h2>
+        
+            <!-- Display mode -->
+            <div id="displayMode">
+                <p><strong>Agency Name:</strong> <span id="d_agencyName"><?= htmlspecialchars($agency['agency_name']) ?></span></p>
+                <p><strong>Address:</strong> <span id="d_address"><?= htmlspecialchars($agency['address']) ?></span></p>
+                <p><strong>Contact:</strong> <span id="d_contact"><?= htmlspecialchars($agency['contact_number']) ?></span></p>
+                <p><strong>Email:</strong> <span id="d_email"><?= htmlspecialchars($agency['email']) ?></span></p>
+                <p><strong>Password:</strong> <span id="pass">••••••••</span></p>
+                <p><strong>Description:</strong> <span id="d_description"><?= htmlspecialchars($agency['description']) ?></span></p>
+                <button onclick="toggleEdit(true)">Edit</button>
+            </div>
+            
+            <!-- Edit mode -->
+            <form id="editMode" style="display: none;" method="POST" action="save_agency.php" onsubmit="return validatePassword()">
+                <label>Agency Name:</label>
+                <input type="text" name="agencyName" id="agencyName" required>
+                
+                <label>Address:</label>
+                <input type="text" name="address" id="address" required>
+                
+                <label>Contact:</label>
+                <input type="tel" name="contact" id="contact" required>
+                
+                <label>Email:</label>
+                <input type="email" name="email" id="email" required>
+
+                <label>New Password:</label>
+                <input type="password" name="password" id="password" placeholder="Leave blank to keep current">
+                
+                <label>Confirm Password:</label>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm new password">
+                
+                <label>Description:</label>
+                <textarea name="description" id="description" rows="4" required></textarea>
+                
+                <button type="submit">Save</button>
+                <button type="button" onclick="toggleEdit(false)">Cancel</button>
+            </form>
+        </div>
+      </div>
+
+    <script>
+        // Highlight the nav item for the current page
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPage = window.location.pathname.split("/").pop();
+            const links = document.querySelectorAll("nav ul li a");
+        
+            links.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.parentElement.classList.add("active");
+                }
+            });
+        });
+
+        function toggleEdit(editing) {
+            const display = document.getElementById("displayMode");
+            const edit = document.getElementById("editMode");
+        
+            if (editing) {
+                // Pre-fill input fields with current values
+                document.getElementById("agencyName").value = document.getElementById("d_agencyName").textContent;
+                document.getElementById("address").value = document.getElementById("d_address").textContent;
+                document.getElementById("contact").value = document.getElementById("d_contact").textContent;
+                document.getElementById("email").value = document.getElementById("d_email").textContent;
+                document.getElementById("description").value = document.getElementById("d_description").textContent;
+            }
+        
+            display.style.display = editing ? "none" : "block";
+            edit.style.display = editing ? "block" : "none";
+        }
+
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+            
+            if (password.length > 0 && password.length < 8) {
+                alert("Password must be at least 8 characters long!");
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

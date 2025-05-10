@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+#background {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #f3c2c4;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 25px;
+  left: 20px;
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===== Left Panel - Navigation ===== */
+#divleft {
+  background-color: #B01D23;
+  width: 15%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px; /* Account for top bar */
+  margin-top: -80px; /* Pull up to overlap */
+}
+
+#profile {
+  height: 10px;
+  background-color: #B01D23;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#profile {
+  height: 150px;
+  padding: 10px;
+  width: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+
+/* Navigation Styles */
+nav {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-bottom: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 12px 15px;
+  font-size: 15px;
+}
+
+nav ul li:hover,
+nav ul li.active {
+  background-color: #313131;
+}
+
+/* RIGHT PANEL STYLES  */
+#divright {
+  background-color: #ffffff;
+  width: 85%;
+  float: right;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+/* Typography */
+h1 {
+  font-size: 1.25rem;
+  text-align: center;
+  padding: 20px;
+  color: #333;
+}
+
+h2 {
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+h3, h4 {
+  font-size: 0.9375rem;
+  padding: 5px 0 0 200px;
+  color: #fff;
+}
+
+/* Agency Profile */
+#agencyprofile {
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #B01D23;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: 150px;
+}
+
+/* Details Section */
+#details {
+  width: 95%;
+  margin: 3.125rem auto;
+  padding: 1.25rem;
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Display Mode */
+#displayMode p {
+  font-size: 1rem;
+  margin: 0.625rem 0;
+  color: #444;
+}
+
+/* Edit Mode */
+#editMode label {
+  display: block;
+  margin: 0.75rem 0 0.375rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#editMode input,
+#editMode textarea {
+  width: 100%;
+  padding: 0.625rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+}
+
+/* Buttons */
+button {
+  padding: 0.625rem 1rem;
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#displayMode button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#editMode button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
+  margin-right: 0.625rem;
+}
+
+#editMode button[type="button"] {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Hover States */
+button:hover {
+  opacity: 0.9;
+}
+
+#displayMode button:hover {
+  background-color: #0056b3;
+}
+
+#editMode button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+#editMode button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  #background {
+      flex-direction: column;
+      height: auto;
+  }
+
+  #divleft, #divright {
+      width: 100%;
+      margin-right: 0;
+  }
+
+  #divright {
+      max-height: none;
+  }
+
+  #details {
+      padding: 0.9375rem;
+      margin: 1.5625rem auto;
+  }
+
+  #editMode input,
+  #editMode textarea,
+  #displayMode p {
+      font-size: 0.875rem;
+  }
+
+  button {
+      width: 100%;
+      margin-top: 0.625rem;
+  }
+
+  h3, h4 {
+      padding-left: 1.25rem;
+  }
+}

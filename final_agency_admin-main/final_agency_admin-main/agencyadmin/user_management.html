@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY ADMIN</title>
+    <link rel="stylesheet" href="user_management.css">
+</head>
+
+<body>
+    <div id="background">
+        <!-- Left Sidebar Section -->
+         <div id="topbar"> 
+            <img src="logo.jpg" alt="Logo" class="logo"> </div>
+
+        <div id="divleft">
+            <div id="profile">
+                <!-- dito si pic -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="dashnav">Dashboard</a></li>
+                    <li><a href="flood_monitoring.html" class="dashnav">Flood Monitoring</a></li>
+                    <li><a href="incidentmanagement.html" class="dashnav">Incident Management</a></li>
+                    <li><a href="user_management.html" class="dashnav">User Management</a></li>
+                    <li><a href="announcement.html" class="dashnav">Announcement</a></li>
+                    <li><a href="setting.html" class="dashnav">Settings</a></li>
+                    <li>
+                        <form action="logout.php" method="post" style="display: inline;">
+                            <button type="submit" class="logout-btn">
+                                <span class="dashnav">LOGOUT</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="divright">
+          <h1>USER MANAGEMENT</h1>
+              <div class="usermanagementlabel">
+                <label for="userstatus">User Status:</label>
+                  <select name="stat" id="stat" onchange="filterUsers()">
+                    <option value="all">All Users</option>
+                    <option value="Active">Active</option>
+                    <option value="Blocked">Blocked</option>
+                  </select>
+              </div>
+
+              <div id="allusers">
+                <table class="allusers-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>DATE REGISTERED</th>
+                            <th>ADDRESS</th>
+                            <th>ACCOUNT STATUS</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody id="usersTableBody">
+                        <!-- Sample data that would normally come from PHP -->
+                        <tr data-status="Active">
+                            <td>John Reymar</td>
+                            <td>2023-01-15</td>
+                            <td>Telbang, Bayambang</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr data-status="Active">
+                            <td>Katherne</td>
+                            <td>2023-02-20</td>
+                            <td>Alingan, Bayambang</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr data-status="Blocked">
+                            <td>Novito</td>
+                            <td>2023-03-10</td>
+                            <td>Gatang, Malasiqui</td>
+                            <td>Blocked</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>      
+      </div>
+
+      <script>
+          // Highlight the nav item for the current page
+          document.addEventListener("DOMContentLoaded", function() {
+              const currentPage = window.location.pathname.split("/").pop();
+              const links = document.querySelectorAll("nav ul li a");
+          
+              links.forEach(link => {
+                  if (link.getAttribute("href") === currentPage) {
+                      link.parentElement.classList.add("active");
+                  }
+              });
+          });
+
+          // Filter users based on selected status
+          function filterUsers() {
+              const status = document.getElementById('stat').value;
+              const rows = document.querySelectorAll('#usersTableBody tr');
+              
+              rows.forEach(row => {
+                  if (status === 'all' || row.getAttribute('data-status') === status) {
+                      row.style.display = '';
+                  } else {
+                      row.style.display = 'none';
+                  }
+              });
+          }
+      </script>
+</body>
+</html>

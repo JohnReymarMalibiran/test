@@ -1,0 +1,365 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+#background {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+#topbar {
+    background: linear-gradient(90deg, #ffffff, #B01D23);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: #f3c2c4;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ===== Left Panel - Navigation ===== */
+#divleft {
+    background-color: #B01D23;
+    width: 15%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px; /* Account for top bar */
+    margin-top: -80px; /* Pull up to overlap */
+}
+.profile_logo{
+    height: 100px;
+    padding: 20px;
+    margin: 20px;
+    width: 140px;
+    bottom: -40px;
+    right: -40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#profile {
+    height: 10px;
+    background-color: #B01D23;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#profile {
+    height: 150px;
+    padding: 10px;
+    width: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+
+/* Navigation Styles */
+nav {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 12px 15px;
+    font-size: 15px;
+}
+
+nav ul li:hover,
+nav ul li.active {
+    background-color: #313131;
+}
+
+/* ===== Right Panel Styles ===== */
+#divright {
+    background-color: #ffffff;
+    width: 85%;
+    float: right;
+    margin-left: 60px;
+    box-sizing: border-box;
+}
+
+/* Headers */
+h1, h2, h3 {
+    text-align: left;
+    padding-left: 50px;
+}
+
+h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 15px;
+    background-color: #F9F499;
+    width: 150px;
+    text-align: center;
+}
+
+/* Dashboard Elements */
+.dashboardtop {
+    display: flex;
+    margin-top: 80px;
+}
+
+#title {
+    width: 285px;
+    height: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#title { background-color: #B01D23; }
+#monthof { background-color: #909090; }
+
+#monthof select {
+    margin-top: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#monthof {
+    background-color: #909090;
+    width: 285px;
+    height: 70px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#month {
+    margin: 5px 0;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 80%;
+    background-size: 16px;
+    text-align: center;
+}
+
+#month:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(249, 244, 153, 0.5);
+}
+
+/* Dropdown options styling */
+#month option {
+    padding: 8px;
+    background-color: white;
+    color: #333;
+}
+
+/* Label for the dropdown */
+#monthof label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Report Items */
+.report-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
+    max-width: 1010px;
+    margin-top: 5px;
+}
+
+.report-item {
+    width: 535px;
+    background-color: #eeeaea;
+    color: #333;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.1);
+}
+
+.label { text-align: left; }
+.value { text-align: right; }
+
+
+
+#chart {
+    float: right;
+}
+
+.chart-title {
+    margin-top: 0;
+    background-color: #bd1313;
+    color: #ffffff;
+}
+
+/* Quick Access */
+.summary-container {
+    background-color: #a3a3a3;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 1rem;
+    width: 50%;
+    height: 230px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+
+.card {
+    background-color: #fafafa;
+    color: #333;
+    border-radius: 1rem;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.total-users {
+    width: 30%;
+    height: auto;
+}
+
+.total-incidents {
+    float: right;
+}
+
+.card-title {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.card.warning {
+    background-color: #FF6B6B;
+    color: white;
+    width: 50%;
+    margin-top: 10px;
+}
+
+.incident-subvalues {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.sub-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.sub-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+    .content {
+        width: 100%;
+    }
+    
+    #divleft, #divright {
+        width: 100%;
+        float: none;
+    }
+    
+    .dashboardtop {
+        flex-direction: column;
+    }
+    
+    #title, #monthof, #total {
+        width: 100%;
+    }
+    
+    .summary-container {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+    }
+
+    /* Adjust navigation for mobile */
+    nav ul li {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .logout-btn {
+        font-size: 18px;
+    }
+}

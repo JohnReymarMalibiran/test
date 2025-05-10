@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY ADMIN</title>
+    <link rel="stylesheet" href="flood_monitoring.css">
+</head>
+
+<body>
+  <div id="background">
+    <!-- Left Sidebar Section -->
+     <div id="topbar"> 
+        <img src="logo.jpg" alt="Logo" class="logo"> </div>
+
+    <div id="divleft">
+        <div id="profile">
+            <!-- dito si pic -->
+        </div>
+
+            <nav>
+              <ul>
+                <li><a href="dashboard.html" class="dashnav">Dashboard</a></li>
+                <li><a href="flood_monitoring.html" class="dashnav">Flood Monitoring</a></li>
+                <li><a href="incidentmanagement.html" class="dashnav">Incident Management</a></li>
+                <li><a href="user_management.html" class="dashnav">User Management</a></li>
+                <li><a href="announcement.html" class="dashnav">Announcement</a></li>
+                <li><a href="setting.html" class="dashnav">Settings</a></li>
+                  <li>
+                      <form action="logout.php" method="post" style="display: inline;">
+                          <button type="submit" class="logout-btn">
+                              <span class="dashnav">LOGOUT</span>
+                          </button>
+                      </form>
+                  </li>
+              </ul>
+          </nav>
+        </div>
+
+        <div id="divright">
+          <div class="flood-container">
+            
+            <div id="floodmonitoringForm">
+                <div class="textcause">Flood Monitoring</div>
+            </div>
+          
+            <div id="date">
+              <div class="datecause">Date: April 20, 2025</div>
+            </div>
+          
+            <div id="statusFlood">
+              <div class="status">Cause: Heavy Rain</div>
+            </div>
+            
+            <div style="clear: both;"></div> <!-- Optional: Clears the float -->
+          </div>
+          
+          <div id="water-level">
+            <div id="probeA">Probe A</div>
+            <div id="probeB">Probe B</div>
+            <div id="probeC">Probe C</div>
+          </div>
+        </div>
+
+        <script>
+            // Highlight the nav item for the current page
+            document.addEventListener("DOMContentLoaded", function() {
+              const currentPage = window.location.pathname.split("/").pop();
+              const links = document.querySelectorAll("nav ul li a");
+          
+              links.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                  link.parentElement.classList.add("active");
+                }
+              });
+            });
+          </script>
+
+</body>
+</html>

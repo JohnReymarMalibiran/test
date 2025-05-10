@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AGENCY ADMIN</title>
+    <link rel="stylesheet" href="announcement.css">
+</head>
+<body>
+    <div id="background">
+        <!-- Left Sidebar Section -->
+         <div id="topbar"> 
+            <img src="logo.jpg" alt="Logo" class="logo"> </div>
+
+        <div id="divleft">
+            <div id="profile">
+                <!-- dito si pic -->
+            </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html" class="dashnav">Dashboard</a></li>
+                <li><a href="flood_monitoring.html" class="dashnav">Flood Monitoring</a></li>
+                <li><a href="incidentmanagement.html" class="dashnav">Incident Management</a></li>
+                <li><a href="user_management.html" class="dashnav">User Management</a></li>
+                <li><a href="announcement.html" class="dashnav">Announcement</a></li>
+                <li><a href="setting.html" class="dashnav">Settings</a></li>
+                <li>
+                    <form action="logout.php" method="post" style="display: inline;">
+                        <button type="submit" class="logout-btn">
+                            <span class="dashnav">LOGOUT</span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="divright">
+        <h1>CREATE ANNOUNCEMENT</h1>
+        <div id="announcementF">
+            <form id="announcementForm" method="POST" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
+                <input type="text" name="title" id="announcementInput" placeholder="WRITE TITLE HERE..." readonly required>
+
+                <div id="announcementExpanded">
+                    <textarea name="content" placeholder="Write announcement content here..." required></textarea>
+
+                    <label for="fileUpload" class="file-label">Choose an Image</label>
+                    <input type="file" id="fileUpload" name="image" accept="image/*" onchange="displayFileName(this)">
+                    <span id="fileNameDisplay">No file chosen</span>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" onclick="cancelAnnouncement()">Cancel</button>
+                    <button type="submit">Publish</button>
+                </div>
+            </form>
+        </div>
+
+        <h1>BULLETIN BOARD</h1>
+        <div id="bulletin">
+            <div class="content">
+                <h1>Announcements</h1>
+                <div class="announcements">
+                    <!-- Sample announcements (would normally come from database) -->
+                    <div class="announcement">
+                        <h3>Important Weather Update</h3>
+                        <p class="announcement-date">Posted on: June 15, 2023</p>
+                        <p class="announcement-content">Heavy rains expected in the region tomorrow. Please take necessary precautions.</p>
+                        <img src="sample-weather.jpg" alt="Announcement Image" style="max-width: 300px; margin-top: 10px;">
+                    </div>
+                    
+                    <div class="announcement">
+                        <h3>Community Meeting</h3>
+                        <p class="announcement-date">Posted on: June 10, 2023</p>
+                        <p class="announcement-content">There will be a community meeting this Friday at 5pm in the town hall to discuss flood prevention measures.</p>
+                    </div>
+                    
+                    <div class="announcement">
+                        <h3>New Emergency Contacts</h3>
+                        <p class="announcement-date">Posted on: June 5, 2023</p>
+                        <p class="announcement-content">Please save these emergency numbers:\n\nPolice: 911\nFire: 912\nRescue: 913</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const links = document.querySelectorAll("nav ul li a");
+
+        links.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.parentElement.classList.add("active");
+            }
+        });
+    });
+
+    const announcementInput = document.getElementById("announcementInput");
+    const announcementForm = document.getElementById("announcementForm");
+
+    announcementInput.addEventListener("focus", () => {
+        announcementForm.classList.add("active");
+        announcementInput.removeAttribute("readonly");
+    });
+
+    function cancelAnnouncement() {
+        announcementForm.classList.remove("active");
+        announcementInput.value = "";
+        announcementInput.setAttribute("readonly", true);
+        document.getElementById("fileNameDisplay").textContent = "No file chosen";
+        document.getElementById("fileUpload").value = "";
+        announcementForm.querySelector("textarea").value = "";
+    }
+
+    function displayFileName(input) {
+        const fileName = input.files[0] ? input.files[0].name : "No file chosen";
+        document.getElementById("fileNameDisplay").textContent = fileName;
+    }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        // In a real implementation, this would submit to server
+        alert("Announcement would be published here (server-side functionality removed)");
+        cancelAnnouncement();
+        return false;
+    }
+</script>
+</body>
+</html>

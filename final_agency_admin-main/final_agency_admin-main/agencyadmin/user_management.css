@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+#background {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+#topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: #f3c2c4;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ===== Left Panel - Navigation ===== */
+#divleft {
+    background-color: #B01D23;
+    width: 15%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px; /* Account for top bar */
+    margin-top: -80px; /* Pull up to overlap */
+}
+
+#profile {
+    height: 10px;
+    background-color: #B01D23;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#profile {
+    height: 150px;
+    padding: 10px;
+    width: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+
+/* Navigation Styles */
+nav {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 12px 15px;
+    font-size: 15px;
+}
+
+nav ul li:hover,
+nav ul li.active {
+    background-color: #313131;
+}
+
+/*RIGHT PANEL STYLES */
+#divright {
+    background-color: #ffffff;
+    width: 85%;
+    float: right;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+/* Headers */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin: 1rem 0;
+}
+
+/*USER MANAGEMENT STYLES*/
+.usermanagementlabel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 1rem auto;
+    max-width: 900px;
+    justify-content: flex-end;
+    padding: 0 1rem;
+}
+
+.usermanagementlabel label {
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    white-space: nowrap;
+    color: #333;
+}
+
+.usermanagementlabel select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    width: 250px;
+    border-radius: 4px;
+    border: 2px solid #D4885D;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* TABLE STYLES */
+.allusers-table {
+    width: 95%;
+    margin: 1rem auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.allusers-table thead {
+    background-color: #D4885D;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.allusers-table th,
+.allusers-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.allusers-table th {
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+.allusers-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.allusers-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    #background {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #divleft, #divright {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+    }
+
+    .usermanagementlabel {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 1rem;
+    }
+
+    .usermanagementlabel select {
+        width: 100%;
+    }
+
+    .allusers-table {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .allusers-table th,
+    .allusers-table td {
+        padding: 8px 10px;
+    }
+}

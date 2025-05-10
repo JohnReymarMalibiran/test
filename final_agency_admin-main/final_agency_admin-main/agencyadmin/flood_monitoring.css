@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+#background {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+#topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: #f3c2c4;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ===== Left Panel - Navigation ===== */
+#divleft {
+    background-color: #B01D23;
+    width: 15%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px; /* Account for top bar */
+    margin-top: -80px; /* Pull up to overlap */
+}
+
+#profile {
+    height: 10px;
+    background-color: #B01D23;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#profile {
+    height: 150px;
+    padding: 10px;
+    width: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+
+/* Navigation Styles */
+nav {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 12px 15px;
+    font-size: 15px;
+}
+
+nav ul li:hover,
+nav ul li.active {
+    background-color: #313131;
+}
+
+/* RED BOX */
+#divright {
+    background-color: #ffffff;
+    width: 85%;
+    float: right;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.flood-container {
+    display: flex;
+  }
+  
+  #floodmonitoringForm, #date, #statusFlood {
+    width: 400px;
+    height: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  
+  #floodmonitoringForm{ background-color: #B01D23; }
+  #date { background-color: #909090; }
+  #statusFlood { background-color: #d48383; }
+  
+/* Style for Water Level Section */
+#water-level {
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Space between each probe */
+    margin-top: 30px; /* Add margin on top for spacing */
+    gap: 20px; /* Space between the individual probes */
+    padding: 20px;
+  }
+  
+  /* Style for each individual probe */
+  #water-level div {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text color */
+    padding: 40px 20px; /* Enlarged padding for bigger probes */
+    font-size: 20px; /* Larger text */
+    text-align: center; /* Center text */
+    border-radius: 10px; /* Rounded corners */
+    width: 30%; /* Make each probe take 30% of the container width */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Hover effect */
+  #water-level div:hover {
+    background-color: #45a049; /* Slightly darker green */
+    transform: translateY(-5px); /* Slight lift effect */
+    cursor: pointer; /* Change cursor to pointer */
+  }
+  
+  /* Media Query for small screen responsiveness */
+  @media (max-width: 768px) {
+    #water-level {
+      flex-direction: column; /* Stack vertically on small screens */
+      align-items: center; /* Center the probes */
+      justify-content: center; /* Center the probes vertically */
+    }
+  
+    #water-level div {
+      width: 80%; /* Make each probe take 80% of the container width */
+      margin-bottom: 20px; /* Add space between stacked probes */
+    }
+  }
+  
